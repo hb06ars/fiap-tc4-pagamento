@@ -24,7 +24,7 @@ public class PedidoConfiguration {
 
     @Bean
     public IntegrationFlow findById() {
-        return IntegrationFlow.from("clienteFindById")
+        return IntegrationFlow.from("pedidoFindById")
                 .handle(Http.outboundGateway(m -> PEDIDO_BASE_URL.concat("/" + m.getPayload()))
                         .httpMethod(HttpMethod.GET)
                         .expectedResponseType(PedidoDTO.class)
