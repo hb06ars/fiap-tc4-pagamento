@@ -32,9 +32,8 @@ public class PagamentoEntity implements Serializable {
     @Positive(message = "O Pedido ID deve ser maior que 0")
     private Long pedidoId;
 
-    @Column(name = "idpagamento", nullable = false, unique = true)
-    @Positive(message = "O ID do Pagamento deve ser maior que 0")
-    private Long idPagamento;
+    @Column(name = "idpagamento")
+    private String idPagamento;
 
     @Column(name = "dt_pagamento")
     private LocalDateTime dtPagamento;
