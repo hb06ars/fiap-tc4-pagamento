@@ -16,7 +16,7 @@ import static org.fiap.domain.util.UrlConstants.PEDIDO_BASE_URL;
 public class PedidoConfiguration {
 
     @Bean
-    public MessageChannel cliente() {
+    public MessageChannel pagamento() {
         DirectChannel directChannel = new DirectChannel();
         directChannel.setFailover(false);
         return directChannel;
