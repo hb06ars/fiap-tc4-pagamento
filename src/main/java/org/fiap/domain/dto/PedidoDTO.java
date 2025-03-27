@@ -23,7 +23,7 @@ public class PedidoDTO {
     private Long clienteId;
     private String numeroCartaoCredito;
     private StatusPagamentoEnum status = StatusPagamentoEnum.ABERTO;
-    private BigDecimal totalCompra;
+    private BigDecimal valorTotal;
     private LocalDateTime dtPedido;
     private LocalDateTime dtProcessamento = LocalDateTime.now();
     private LocalDateTime dtAtualizacao = LocalDateTime.now();
@@ -36,6 +36,7 @@ public class PedidoDTO {
         this.status = pedidoDTO.getStatus();
         this.dtPedido = pedidoDTO.getDtPedido();
         this.dtProcessamento = pedidoDTO.getDtProcessamento();
+        this.valorTotal = pedidoDTO.getValorTotal();
         this.dtAtualizacao = pedidoDTO.getDtAtualizacao();
     }
 }

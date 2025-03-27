@@ -45,5 +45,6 @@ public class PagamentoDTO {
         this.dtPagamento = request.getDtPagamento();
         this.statusPagamento = request.getStatusPagamento();
         this.dtAtualizacao = request.getDtAtualizacao();
+        this.valorTotal = request.getValorTotal();
     }
 }
