@@ -13,6 +13,7 @@ import lombok.Setter;
 import org.fiap.domain.dto.PagamentoDTO;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Getter
@@ -44,6 +45,9 @@ public class PagamentoEntity implements Serializable {
     @Column(name = "dt_atualizacao")
     private LocalDateTime dtAtualizacao;
 
+    @Column(name = "valor_total")
+    private BigDecimal valorTotal;
+
 
     public PagamentoEntity(PagamentoDTO dto) {
         this.id = dto.getId();
@@ -52,5 +56,6 @@ public class PagamentoEntity implements Serializable {
         this.dtPagamento = dto.getDtPagamento();
         this.statusPagamento = dto.getStatusPagamento();
         this.dtAtualizacao = dto.getDtAtualizacao();
+        this.valorTotal = dto.getValorTotal();
     }
 }

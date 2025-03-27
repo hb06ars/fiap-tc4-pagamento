@@ -9,6 +9,7 @@ import lombok.Setter;
 import org.fiap.app.rest.request.PagamentoRequest;
 import org.fiap.domain.entity.PagamentoEntity;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Getter
@@ -25,6 +26,7 @@ public class PagamentoDTO {
     private LocalDateTime dtPagamento;
     private String statusPagamento;
     private LocalDateTime dtAtualizacao;
+    private BigDecimal valorTotal;
 
     public PagamentoDTO(PagamentoEntity pagamentoEntity) {
         this.id = pagamentoEntity.getId();
@@ -33,6 +35,7 @@ public class PagamentoDTO {
         this.dtPagamento = pagamentoEntity.getDtPagamento();
         this.statusPagamento = pagamentoEntity.getStatusPagamento();
         this.dtAtualizacao = pagamentoEntity.getDtAtualizacao();
+        this.valorTotal = pagamentoEntity.getValorTotal();
     }
 
     public PagamentoDTO(PagamentoRequest request) {
