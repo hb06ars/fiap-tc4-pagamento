@@ -42,6 +42,8 @@ public class PagamentoService {
         } else {
             log.error("Não há credito no cartão, pedido fechado sem crédito.");
             pagamento.setStatusPagamento(StatusPagamentoEnum.FECHADO_SEM_CREDITO.getDescricao());
+            log.error("Efetuando rollback do Estoque");
+            gatewayApi.pedidoRollBack(new GenericMessage<>(new PagamentoDTO(pagamento)));
         }
         return new PagamentoDTO(repository.save(pagamento));
     }

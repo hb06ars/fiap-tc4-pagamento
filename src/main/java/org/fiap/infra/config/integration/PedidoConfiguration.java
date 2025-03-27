@@ -1,5 +1,6 @@
 package org.fiap.infra.config.integration;
 
+import org.fiap.domain.dto.PagamentoDTO;
 import org.fiap.domain.dto.PedidoDTO;
 import org.fiap.infra.exceptions.GatewayResponseErrorHandler;
 import org.springframework.context.annotation.Bean;
@@ -28,6 +29,18 @@ public class PedidoConfiguration {
                 .handle(Http.outboundGateway(m -> PEDIDO_BASE_URL.concat("/" + m.getPayload()))
                         .httpMethod(HttpMethod.GET)
                         .expectedResponseType(PedidoDTO.class)
+                        .errorHandler(new GatewayResponseErrorHandler())
+                )
+                .log().bridge().get();
+    }
+
+    @Bean
+    public IntegrationFlow rollBackPed() {
+        return IntegrationFlow.from("pedidRollback")
+                .handle(Http.outboundGateway(PEDIDO_BASE_URL.concat("/rollback"))
+                        .httpMethod(HttpMethod.POST)
+                        .expectedResponseType(PagamentoDTO.class)
+                        .extractPayload(true)
                         .errorHandler(new GatewayResponseErrorHandler())
                 )
                 .log().bridge().get();

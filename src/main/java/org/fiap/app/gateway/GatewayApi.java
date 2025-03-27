@@ -1,5 +1,6 @@
 package org.fiap.app.gateway;
 
+import org.fiap.domain.dto.PagamentoDTO;
 import org.fiap.domain.dto.PedidoDTO;
 import org.springframework.integration.annotation.Gateway;
 import org.springframework.integration.annotation.MessagingGateway;
@@ -10,4 +11,7 @@ public interface GatewayApi {
 
     @Gateway(requestChannel = "pedidoFindById", requestTimeout = 5000)
     PedidoDTO pedidoFindById(Message<Long> id);
+
+    @Gateway(requestChannel = "pedidRollback", requestTimeout = 5000)
+    PagamentoDTO pedidoRollBack(Message<PagamentoDTO> request);
 }
